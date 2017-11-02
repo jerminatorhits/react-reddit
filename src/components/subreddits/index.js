@@ -3,6 +3,20 @@ import React from 'react';
 import Subreddit from './item';
 
 export default class SubredditsContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selected: null
+    }
+  }
+
+  onChildClick(selected) {
+    this.setState({
+      selected: selected
+    });
+  }
+
   renderSubreddits(subreddits) {
     return subreddits.map(item => {
       return (
@@ -10,7 +24,9 @@ export default class SubredditsContainer extends React.Component {
           activate={this.props.setActiveSubreddit}
           key={item.data.id}
           name={item.data.display_name}
-          url={item.data.url} />
+          url={item.data.url}
+          selected={this.state.selected==item.data.display_name}
+          onChildClick={this.onChildClick.bind(this)} />
       );
     });
   }

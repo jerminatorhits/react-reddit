@@ -11,7 +11,7 @@ export default class Listing extends React.Component {
     return (
       <tr className="listing">
         <td className="scoreContainer">
-          <p className="score">1234</p>
+          <p className="score">{this.props.score}</p>
         </td>
         <td className="titleContainer">
           <p className="title">
