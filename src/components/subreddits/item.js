@@ -4,17 +4,19 @@ import React from 'react';
 export default class Subreddit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isSelected: false };
+    this.state = { 
+      isSelected: false,
+    };
   }
 
   onClick() {
-    this.setState({ isSelected: true });
+    this.props.onChildClick(this.props.name);
     this.props.activate(this.props.url);
   }
 
   render() {
     return (
-      <li onClick={this.onClick.bind(this)} className={this.state.isSelected ? 'selected' : ''}>
+      <li onClick={this.onClick.bind(this)} className={this.props.selected ? "selected" : ""}>
         {this.props.name}
       </li>
     );
